@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from './post';
 import { PostService } from './post.service';
-import { AppError } from '../sogeti-common/error-handling/app-error';
-import { BadInput } from '../sogeti-common/error-handling/bad-input-error';
-import { NotFoundError } from '../sogeti-common/error-handling/not-found-error';
+import { AppError } from '../common/error-handling/app-error';
+import { BadInput } from '../common/error-handling/bad-input-error';
+import { NotFoundError } from '../common/error-handling/not-found-error';
 
 @Component({
   selector: 'app-post',
@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
         response => this.posts = response);
   }
 
-  createPost(title) {
+  createPost(title: string) {
     const post = {
       title: title
     };
@@ -29,11 +29,9 @@ export class PostComponent implements OnInit {
     this.postService.post(post as Post)
       .subscribe(
         response => {
-          console.log(response);
           post['id'] = response['id'];
         },
         (error: AppError) => {
-          console.log(error);
           this.posts.shift();
           if (error instanceof BadInput) {
             alert(`bad post input: ${post}`);
@@ -41,6 +39,7 @@ export class PostComponent implements OnInit {
           }
           throw(error);
         });
+    title = '';
   }
 
   deletePost(post) {

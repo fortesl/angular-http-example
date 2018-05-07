@@ -13,8 +13,9 @@
     role="listitem">
       {{post.title}}
       <button
+        class="margin-left"
         (click)="deletePost(post)"
-        mat-mini-fab>Delete</button>
+        mat-raised-button>Delete</button>
     </mat-list-item>
 </mat-list>
 <mat-error *ngIf="!posts.length">No posts found!</mat-error>

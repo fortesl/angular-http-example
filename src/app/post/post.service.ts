@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DataService } from '../sogeti-common/services/data.service';
+import { DataService } from '../common/services/data.service';
 
 @Injectable()
 export class PostService extends DataService {
