@@ -52,7 +52,7 @@ export class PostComponent implements OnInit {
           (error: AppError) => {
             this.posts.splice(postIndex, 0, post);
             if (error instanceof NotFoundError) {
-              console.log(`${post.title} already deleted`);
+              alert(`${post.title} not found. already deleted?`);
               return;
             }
             throw(error);
